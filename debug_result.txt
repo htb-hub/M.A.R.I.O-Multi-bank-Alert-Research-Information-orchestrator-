@@ -1,0 +1,82 @@
+dl count: 1
+dl dt count: 20
+--- first dl prettify ---
+<dl>
+ <dt>
+  2026/08/24
+ </dt>
+ <dd>
+  <a href="https://www.security-next.com/189254" onclick="pageTracker._trackEvent('cl', 'incl - monthmain - month', 'month - 202608');">
+   注文の配送先情報を含むPCに不正アクセス - 楽天グループ会社
+  </a>
+ </dd>
+ <dt>
+  2026/08/24
+ </dt>
+ <dd>
+  <a href="https://www.security-next.com/189155" onclick="pageTracker._trackEvent('cl', 'incl - monthmain - month', 'month - 202608');">
+   IBMの「AIX」「PowerVM VIOS」に多数脆弱性 - 修正版を提供
+  </a>
+ </dd>
+ <dt>
+  2026/08/24
+ </dt>
+ <dd>
+  <a href="https://www.security-next.com/189265" onclick="pageTracker._trackEvent('cl', 'incl - monthmain - month', 'month - 202608');">
+   先週注目された記事（2026年8月16日〜2026年8月22日）
+  </a>
+ </dd>
+ <dt>
+  2026/08/24
+ </dt>
+ <dd>
+  <a href="https://www.security-next.com/189268" onclick="pageTracker._trackEvent('cl', 'incl - monthmain - month', 'month - 202608');">
+   米当局、「Zimbra」脆弱性の悪用を警告 - 2026年5件目のKEV登録
+  </a>
+ </dd>
+ <dt>
+  2026/08/21
+ </dt>
+ <dd>
+  <a href="https://www.security-next.com/188363" onclick="pageTracker._trackEvent('cl', 'incl - monthmain - month', 'month - 202608');">
+   企業サイト侵害か、問い合わせ情報流出の可能性 - セントラルコンサルタント
+  </a>
+ </dd>
+ <dt>
+  2026/08/21
+ </dt>
+ <dd>
+  <a href="https://www.security-next.com/189196" onclick="pageTracker._trackEvent('cl', 'incl - monthmain - month', 'month - 202608');">
+   アクセス制限に不備、個人情報流出の可能性 - エリッツHD子会社
+  </a>
+ </dd>
+ <dt>
+  2026/08/21
+ </dt>
+ <dd>
+  <a href="https://www.security-next.com/187860" onclick="pageTracker._trackEvent('cl', 'incl - monthmain - month', 'month - 202608');">
+   委託先の患者支援システムで個人情報流出 - 旭化成セラピューティクス
+  </a>
+ </dd>
+ <dt>
+  2026/08/21
+ </dt>
+ <dd>
+  <a href="https://www.security-next.com/189129" onclick="pageTracker._trackEvent('cl', 'incl - monthmain - month', 'month - 202608');">
+   広報紙配布の宛名シール、別人宛名に重ね貼り - 大阪市
+  </a>
+ </dd>
+ <dt>
+  2026/08/21
+ </dt>
+ <dd>
+  <a href="https://www.security-next.com/188970" onclick="pageTracker._trackEvent('cl', 'incl - monthmain - month', 'month - 202608');">
+   調査票発送時の宛名に本来不要な国籍を記載 - 杉並区
+  </a>
+ </dd>
+ <dt>
+  2026/08/2
+--- first dt ---
+<dt>2026/08/24</dt>
+--- next sibling dd ---
+<dd><a href="https://www.security-next.com/189254" onclick="pageTracker._trackEvent('cl', 'incl - monthmain - month', 'month - 202608');">注文の配送先情報を含むPCに不正アクセス - 楽天グループ会社</a></dd>
