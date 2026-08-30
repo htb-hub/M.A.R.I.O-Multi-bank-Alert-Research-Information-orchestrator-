@@ -1,0 +1,39 @@
+diff a/app_n.py b/app_n.py	(rejected hunks)
+@@ -20,24 +20,23 @@
+     return sites
+ 
+ 
+-def display_results(results):
++def display_by_name(results, key):
++    by_name = {}
+     for r in results:
+         if "error" in r:
+             st.error(f"{r.get('name', '')} : {r['error']}")
+             continue
+-        failures = r.get("failures", [])
+-        releases = r.get("releases", [])
+-        if not failures and not releases:
+-            continue
+-        with st.expander(f"📌 {r['name']} ({r['url']})"):
+-            if failures:
+-                st.markdown("**🔴 障害情報**")
+-                for item in failures:
+-                    st.markdown(f"- [{item['title']}]({item['url']})")
+-            if releases:
+-                st.markdown("**🟢 リリース情報**")
+-                for item in releases:
+-                    st.markdown(f"- [{item['title']}]({item['url']})")
++        for item in r.get(key, []):
++            by_name.setdefault(r["name"], []).append(item)
++    if not by_name:
++        st.info("該当する情報はありませんでした")
++        return
++    for name, items in by_name.items():
++        with st.expander(f"📌 {name}"):
++            for item in items:
++                st.markdown(f"- [{item['title']}]({item['url']})")
++                if item.get("body"):
++                    st.text(item["body"])
+ 
+ 
+ def notify_and_save(results, source_type):
