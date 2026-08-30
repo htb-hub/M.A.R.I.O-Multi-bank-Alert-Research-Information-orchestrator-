@@ -23,13 +23,12 @@ def _get_soup(url):
 def _fetch_article_body(url):
     try:
         soup = _get_soup(url)
-        body = soup.find("div", class_="content")
+        for tag in soup(["script", "style", "nav", "header", "footer", "aside"]):
+            tag.decompose()
+        body = soup.find("main") or soup.find("article") or soup.find("body")
         if not body:
             return ""
-        for tag in body.select("div.linkc, div.pnavi, div.sidebar"):
-            tag.decompose()
         text = body.get_text(separator="\n", strip=True)
-        # 関連リンク・PR・関連記事以降を切り捨て
         for marker in ["関連リンク", "関連記事", "PR", "ツイート"]:
             idx = text.find(marker)
             if idx != -1:
@@ -41,6 +40,7 @@ def _fetch_article_body(url):
 
 def _scrape_site(name, url, selector=None, fetch_failures=True, fetch_releases=True):
     results = {"name": name, "url": url, "failures": [], "releases": [], "scraped_at": datetime.now().isoformat()}
+    seen_urls = set()
     try:
         soup = _get_soup(url)
         if selector:
@@ -53,14 +53,12 @@ def _scrape_site(name, url, selector=None, fetch_failures=True, fetch_releases=T
             if not text:
                 continue
             full_url = href if href.startswith("http") else url.rstrip("/") + "/" + href.lstrip("/")
-            if fetch_failures and FAILURE_KEYWORDS.search(text):
-                body = ""
-                if full_url.lower().endswith(".pdf"):
-                    body = "PDFをご確認お願いしますわ"
-                else:
-                    body = _fetch_article_body(full_url)
+            if fetch_failures and FAILURE_KEYWORDS.search(text) and full_url not in seen_urls:
+                seen_urls.add(full_url)
+                body = "PDFをご確認お願いしますわ" if full_url.lower().endswith(".pdf") else _fetch_article_body(full_url)
                 results["failures"].append({"title": text, "url": full_url, "body": body})
-            elif fetch_releases and RELEASE_KEYWORDS.search(text):
+            elif fetch_releases and RELEASE_KEYWORDS.search(text) and full_url not in seen_urls:
+                seen_urls.add(full_url)
                 results["releases"].append({"title": text, "url": full_url})
     except Exception as e:
         results["error"] = str(e)
@@ -69,7 +67,13 @@ def _scrape_site(name, url, selector=None, fetch_failures=True, fetch_releases=T
 
 def scrape_from_list(sites, fetch_failures=True, fetch_releases=True):
     """sites: list of dict with keys name, url, selector(optional)"""
-    return [_scrape_site(s["name"], s["url"], s.get("selector"), fetch_failures=fetch_failures, fetch_releases=fetch_releases) for s in sites]
+    seen = set()
+    unique_sites = []
+    for s in sites:
+        if s["url"] not in seen:
+            seen.add(s["url"])
+            unique_sites.append(s)
+    return [_scrape_site(s["name"], s["url"], s.get("selector"), fetch_failures=fetch_failures, fetch_releases=fetch_releases) for s in unique_sites]
 
 #手入力
 def scrape_from_url(url):
