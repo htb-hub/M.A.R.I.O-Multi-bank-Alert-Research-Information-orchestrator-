@@ -73,6 +73,13 @@ with st.chat_message("mario", avatar="img/character.png"):
     st.markdown("他行の最新情報や障害の発生状況の調査や、セキュリティニュースが確認できますわ。")
     st.markdown("CSV保存、メール送信ももちろん可能ですわよ")
 
+with st.sidebar:
+    if st.button("収集結果をリセット"):
+        for key in ["results_releases", "results_failures", "security_articles"]:
+            st.session_state.pop(key, None)
+        st.success("リセットしましたわ")
+
+
 tab1, tab2, tab3 = st.tabs(["🟢 他行最新情報", "🔴 障害情報", "🔒 セキュリティニュース"])
 
 # ── タブ1: リリース情報 ──
