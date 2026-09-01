@@ -96,7 +96,7 @@ with tab1:
             tip_box = st.empty()
             tip_box.info(f"💡 **Tips**: {random.choice(TIPS)}")
             st.markdown("待ってる間に[診断をどうぞ](https://prismatic-palmier-3d328b.netlify.app/index.html)")
-            st.markdown("お待ちの間、横のメニューからお勉強できますわよ。")
+            st.markdown("[お勉強]もできますわよ(https://itpassta.streamlit.app/)")
             with st.spinner("スクレイピング中ですわ..."):
                 results = scrape_from_list(sites, fetch_failures=False, fetch_releases=True)
             tip_box.empty()
@@ -127,7 +127,7 @@ with tab2:
         tip_box = st.empty()
         tip_box.info(f"💡 **Tips**: {random.choice(TIPS)}")
         st.markdown("待ってる間に[診断をどうぞ](https://prismatic-palmier-3d328b.netlify.app/index.html)")
-        st.markdown("お待ちの間、横のメニューからお勉強できますわよ。")
+        st.markdown("[お勉強]もできますわよ(https://itpassta.streamlit.app/)")
         with st.spinner("スクレイピング中ですわ..."):
             results = scrape_from_list(sites, fetch_failures=True, fetch_releases=False)
         tip_box.empty()
@@ -152,7 +152,7 @@ with tab3:
         tip_box = st.empty()
         tip_box.info(f"💡 **Tips**: {random.choice(TIPS)}")
         st.markdown("待ってる間に[診断をどうぞ](https://prismatic-palmier-3d328b.netlify.app/index.html)")
-        st.markdown("お待ちの間、横のメニューからお勉強できますわよ。")
+        st.markdown("[お勉強]もできますわよ(https://itpassta.streamlit.app/)")
         with st.spinner("取得中ですわ..."):
             articles = scrape_security_news()
         tip_box.empty()
