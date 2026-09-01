@@ -26,7 +26,7 @@ def _fetch_article_body(url):
         soup = _get_soup(url)
         for tag in soup(["script", "style", "nav", "header", "footer", "aside"]):
             tag.decompose()
-        for tag in soup.select("ul.breadcrumb__list, ol.breadcrumb, nav.breadcrumb, .breadcrumb"):
+        for tag in soup.select("ul.breadcrumb__list, ol.breadcrumb, nav.breadcrumb, .breadcrumb, .megamenu, .burgermenu"):
             tag.decompose()
         body = soup.find("div", class_="content") or soup.find("main") or soup.find("article") or soup.find("body")
         if not body:
